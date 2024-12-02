@@ -112,3 +112,6 @@ def find_target(node,target):
         return True
     return find_target(node.left,target) or find_target(node.right,target)
 print(find_target(a,13))
+
+for i in range(1):
+    print(i)
