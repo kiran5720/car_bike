@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Depends, HTTPException
+from starlette.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
 from datetime import datetime
@@ -17,6 +18,14 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins (replace with specific origins in production)
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all HTTP methods
+    allow_headers=["*"],  # Allows all headers
+)
 
 
 def get_db():
